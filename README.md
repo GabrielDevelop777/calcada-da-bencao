@@ -1,44 +1,82 @@
-# 🍔 Sistema de Pedidos Online para Lanchonete Local
+🍔 Sistema de Pedidos Online - Lanchonete do Bairro
+Este projeto foi desenvolvido como um freelancer para uma lanchonete local, com o objetivo de facilitar a realização de pedidos online pelos clientes, integrando um carrinho de compras simples e direto com o WhatsApp da empresa.
 
-Projeto desenvolvido como freelancer para uma lanchonete de bairro, com o objetivo de facilitar os pedidos dos clientes via WhatsApp, melhorar o fluxo de atendimento e dar uma cara digital ao negócio. 🛵📱
+🔧 Tecnologias Utilizadas
+HTML5 e CSS3: Estrutura e estilo da página
 
-## 🚀 Funcionalidades
+JavaScript Vanilla (puro): Lógica de carrinho, formulário, cupom de desconto e integração
 
-- ✅ Cardápio dinâmico com preços
-- ✅ Adição de itens ao carrinho com contador
-- ✅ Aplicação de cupom de desconto
-- ✅ Validação de dados do cliente (nome, telefone, endereço)
-- ✅ Geração automática de mensagem no WhatsApp com o pedido completo
-- ✅ Responsivo para celular (mobile-first)
-- ✅ Sistema de status (Loja Aberta/Fechada)
+API do WhatsApp: Envio automático de pedidos com dados formatados via Click-to-Chat
 
-## 🛠️ Tecnologias utilizadas
+✨ Funcionalidades
+🛒 Adicionar e remover produtos do carrinho
 
-- HTML5
-- CSS3
-- JavaScript puro (Vanilla JS)
-- Integração com WhatsApp API
+🧾 Cálculo de total automático (com suporte a cupom de desconto)
 
-## 🎯 Objetivo do projeto
+💬 Envio do pedido diretamente via WhatsApp com:
 
-A ideia foi criar uma solução simples, leve e direta para ajudar uma lanchonete do meu bairro a receber pedidos de forma organizada, sem depender de plataformas pagas. Com isso, o cliente pode:
+Nome, telefone e endereço do cliente
 
-- Atualizar o cardápio facilmente
-- Aplicar promoções com cupons
-- Receber pedidos diretamente pelo WhatsApp com os dados do cliente
+Forma de pagamento selecionada
 
-## 📸 Preview
+Lista de itens, quantidade e total (com ou sem desconto)
 
-> *(Adicione aqui prints da interface ou um gif mostrando o fluxo completo)*
+⏰ Exibição de status Aberto/Fechado com base no horário atual (dinâmico)
 
-## 📱 Mobile-friendly
+💡 Integração com API do WhatsApp
+Este projeto utiliza a API pública do WhatsApp (Click-to-Chat) para gerar links dinâmicos contendo o resumo do pedido, enviados diretamente ao número da lanchonete.
+Exemplo de uso:
 
-O sistema foi pensado especialmente para celulares, garantindo uma navegação rápida e simples para os clientes da lanchonete.
+js
+Copiar
+Editar
+window.open(`https://api.whatsapp.com/send?phone=...&text=${mensagem}`, "_blank");
+🖼️ Preview
+Adicione uma imagem aqui se quiser ilustrar o sistema funcionando
+Exemplo:
 
----
+📦 Como usar
+Clone o repositório:
 
-## 💼 Sobre o freelancer (eu 😄)
+bash
+Copiar
+Editar
+git clone https://github.com/seuusuario/pedidos-lanchonete.git
+Abra o arquivo index.html no navegador.
 
-Esse projeto foi feito com muito carinho e atenção aos detalhes para um comércio local, e me ajudou a exercitar desde a parte técnica até o atendimento ao cliente e personalização de acordo com o gosto do dono da lanchonete. Um exemplo real de como a programação pode ajudar pequenos negócios!
+Personalize os dados de produtos, número do WhatsApp e mensagens se necessário.
 
-Se quiser trocar uma ideia sobre projetos parecidos ou tiver uma ideia na cabeça, bora conversar! 🚀
+📲 Exemplo de Pedido Enviado
+yaml
+Copiar
+Editar
+RESUMO DO PEDIDO:
+Nome: João Silva
+Telefone: 21999999999
+Endereço: Rua Exemplo, 123
+Forma de pagamento: PIX
+Cupom: DESCONTO10 (10% de desconto aplicado)
+
+- X-Burguer R$12,00 (Qtd: 2)
+- Coca-Cola 350ml R$5,00 (Qtd: 1)
+
+Subtotal: R$29,00  
+Desconto (10%): -R$2,90  
+Total com desconto: R$26,10
+🤝 Projeto Freelancer
+Este projeto foi feito como um freelancer para a Lanchonete do Bairro, com foco em simplicidade, leveza e funcionalidade direta.
+Ideal para comércios locais que ainda não utilizam plataformas de pedidos online.
+
+📌 Melhorias Futuras
+Armazenamento dos dados no localStorage
+
+Backend com banco de dados para histórico de pedidos
+
+Painel de administração para gerenciar produtos e pedidos
+
+📬 Contato
+Fique à vontade para me chamar:
+
+LinkedIn: https://www.linkedin.com/in/gabriel-alexandre-silva/
+
+Email: gabrielalexok@gmail.com
