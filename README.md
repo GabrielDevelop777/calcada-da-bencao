@@ -29,10 +29,7 @@ Este projeto foi desenvolvido como um **freelancer** para uma lanchonete local, 
 Este projeto utiliza a **API pública do WhatsApp (Click-to-Chat)** para gerar links dinâmicos contendo o resumo do pedido, enviados diretamente ao número da lanchonete.  
 Exemplo de uso:
 
-js
-Copiar
-Editar
-window.open(`https://api.whatsapp.com/send?phone=...&text=${mensagem}`, "_blank");
+```´js window.open(`https://api.whatsapp.com/send?phone=...&text=${mensagem}`, "_blank");
 🖼️ Preview
 Adicione uma imagem aqui se quiser ilustrar o sistema funcionando
 Exemplo:
