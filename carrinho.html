@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout Lanchonete</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <button id="cart-btn" class="cart-btn">&#128722;<span id="cart-count">2</span></button>
+            <span class="continue">CONTINUAR COMPRANDO</span>
+        </div>
+    </header>
+
+    <main class="main-container">
+        <section class="cart-section">
+            <table class="cart-table">
+                <thead>
+                    <tr>
+                        <th>Produto</th>
+                        <th>Qtd</th>
+                        <th>Valor</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Hamburguer</td>
+                        <td>1</td>
+                        <td>R$7.00</td>
+                        <td><button class="remove-btn">➖</button></td>
+                    </tr>
+                    <tr>
+                        <td>X-Bacon</td>
+                        <td>1</td>
+                        <td>R$13.50</td>
+                        <td><button class="remove-btn">➖</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="checkout-section">
+            <div class="personal-data">
+                <h3>Dados pessoais</h3>
+                <input type="text" placeholder="Nome">
+                <input type="text" placeholder="Telefone (Whatsapp)">
+            </div>
+            
+            <div class="delivery-options">
+                <h3>Endereço de entrega</h3>
+                <label><input type="radio" name="delivery"> Comer no local</label>
+                <label><input type="radio" name="delivery"> Retirar para viagem</label>
+                <button class="add-address">+ ADICIONAR ENDEREÇO</button>
+            </div>
+            
+            <div class="payment-method">
+                <h3>Forma de Pagamento</h3>
+                <button>Dinheiro</button>
+                <button>PIX</button>
+                <button>Débito</button>
+                <button>Crédito</button>
+            </div>
+
+            <div class="discount">
+                <h3>Cupom de desconto</h3>
+                <input type="text" placeholder="Cupom de desconto">
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="total">
+            <span>Total da compra:</span>
+            <span>R$20.50</span>
+        </div>
+        <button class="send-btn">✔ ENVIAR</button>
+    </footer>
+</body>
+</html>

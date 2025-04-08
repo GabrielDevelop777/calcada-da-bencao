@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calçada da Benção</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="apple-touch-icon" sizes="200x200" href="./img/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="35x35" href="./img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./img/favicon-16x16.png">
+    <link rel="manifest" href="./img/site.webmanifest">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#lanches">🍔 LANCHES</a></li>
+                <li><a href="#secao-alvo">⭐ COMBO</a></li>
+                <li><a href="#bebidas">🥤 BEBIDAS</a></li>
+                <li><a href="#PIZZAS">🥤 PIZZAS</a></li>
+                <li><a href="#ACAI">🥤 ACAI</a></li>
+            </ul>
+        </nav>
+
+
+        <button id="cart-btn">🛒<span id="cart-count">0</span></button>
+    </header>
+
+    <div id="lanches" class="status">⌛ Fechado</div>
+
+
+    <main>
+        <section class="menu">
+
+            <h1>LANCHES</h1>
+
+            <div class="item" data-name="X-bacon-egg" data-price="18.00" data-image="./img/bacon-egg.png">
+                <img src="./img/bacon-egg.png" alt="x-bacon egg">
+                <div class="info">
+                    <h2>X-bacon egg</h2>
+                    <span class="price">R$18,00</span>
+                    <button class="add-to-cart">Adicionar ao carrinho</button>
+                </div>
+            </div>
+
+
+
+            <div class="item" data-name="X-Burguer" data-price="9.50" data-image="./img/carrosel-2.png">
+                <img src="./img/carrosel-2.png" alt="carrossel 2">
+                <div class="info">
+                    <h2>X-Burguer</h2>
+                    <span class="price">R$9,50</span>
+                    <button class="add-to-cart">Adicionar ao carrinho</button>
+                </div>
+            </div>
+
+
+
+            <div class="item" data-name="Carrossel" data-price="15.00" data-image="./img/carrossel-1.png">
+                <img src="./img/carrossel-1.png" alt="carrosel">
+                <div class="info">
+                    <h2>Carrossel</h2>
+                    <span class="price">R$15,00</span>
+                    <button class="add-to-cart">Adicionar ao carrinho</button>
+                </div>
+            </div>
+
+
+
+            <div class="item" data-name="burguer-batata" data-price="23.00" data-image="./img/carrossel-3.png">
+                <img src="./img/carrossel-3.png" alt="xpicanha + batata">
+                <div class="info">
+                    <h2>X-Picanha + Batata</h2>
+                    <span class="price">R$23,00</span>
+                    <button class="add-to-cart">Adicionar ao carrinho</button>
+                </div>
+            </div>
+
+
+
+            <div class="item" data-name="Combo-Duplo-Vegan" data-price="38.00" data-image="./img/monstruoso-vegan.png">
+                <img src="./img/monstruoso-vegan.png" alt="Combo duplo vegan">
+                <div class="info">
+                    <h2>Combo Duplo Vegan</h2>
+                    <span class="price">R$38,00</span>
+                    <button class="add-to-cart">Adicionar ao carrinho</button>
+                </div>
+            </div>
+
+
+
+            <div class="item" data-name="X-Picanha-Ultra" data-price="17.00" data-image="./img/monstruoso.png">
+                <img src="./img/monstruoso.png" alt="X-Picanha-Ultra">
+                <div class="info">
+                    <h2>X-Picanha Ultra</h2>
+                    <span class="price">R$17,00</span>
+                    <button class="add-to-cart">Adicionar ao carrinho</button>
+                </div>
+            </div>
+
+
+
+            <div class="item" data-name="X-Bacon" data-price="12.00" data-image="./img/xbacon.png">
+                <img src="./img/xbacon.png" alt="X-bacon">
+                <div class="info">
+                    <h2>X-Bacon</h2>
+                    <span class="price">R$12,00</span>
+                    <button class="add-to-cart">Adicionar ao carrinho</button>
+                </div>
+            </div>
+
+
+
+            <div class="item" data-name="Hamburguer" data-price="14.00" data-image="./img/xsalada.jpeg">
+                <img src="./img/xsalada.jpeg" alt="Artesanal frango">
+                <div class="info">
+                    <h2>Artesanal Frango</h2>
+                    <span class="price">R$14,00</span>
+                    <button class="add-to-cart">Adicionar ao carrinho</button>
+                </div>
+            </div>
+
+
+
+            <div class="item" data-name="X-Vegano" data-price="14.00" data-image="./img/xvegan.png">
+                <img src="./img/xvegan.png" alt="X-vegano">
+                <div class="info">
+                    <h2>X-Vegano</h2>
+                    <span class="price">R$14,00</span>
+                    <button class="add-to-cart">Adicionar ao carrinho</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+
+    <!------------------------------------------------------------------------------------------------------------------------->
+
+
+
+    <!-- Carrinho -->
+    <div id="cart-container" class="cart-container">
+        <div class="cart-header">
+            <h2 class="your-cart">Seu Carrinho</h2>
+            <button id="close-cart">❌</button>
+        </div>
+
+        <ul class="cart-items"></ul>
+
+        <div class="cart-total">Total: R$<span id="cart-total">0.00</span></div>
+
+        <button onclick="enviarPedido()" id="finalizar-pedido" class="checkout-btn">Finalizar Compra</button>
+    </div>
+    <br>
+    <br>
+
+
+
+    <!------------------------------------------------------------------------------------------------------------------------->
+
+
+
+
+
+    <section id="secao-alvo" class="menu-combo">
+
+        <h1>COMBOS</h1>
+
+
+        <div class="item" data-name="Combo49" data-price="49.00" data-image="./img/bacon-egg.png">
+            <img src="./combo/combo.jpg" alt="Combo xfrango">
+            <div class="info">
+                <h2>Combo 3 X-frango</h2>
+                <span class="price">R$49,00</span>
+                <button class="add-to-cart">Adicionar ao carrinho</button>
+            </div>
+        </div>
+
+
+
+        <div class="item" data-name="Combo79" data-price="79.00" data-image="./img/carrosel-2.png">
+            <img src="./combo/combo1.jpg" alt="Cambo X-baocn">
+            <div class="info">
+                <h2>Combo 3 Duplo X-bacon</h2>
+                <span class="price">R$79,00</span>
+                <button class="add-to-cart">Adicionar ao carrinho</button>
+            </div>
+        </div>
+
+
+
+        <div class="item" data-name="Combo85" data-price="85.00" data-image="./img/carrossel-1.png">
+            <img src="./combo/combo2.jpg" alt="combo 4 X-burger">
+            <div class="info">
+                <h2>Combo 4 X-burger</h2>
+                <span class="price">R$85,00</span>
+                <button class="add-to-cart">Adicionar ao carrinho</button>
+            </div>
+        </div>
+
+
+
+        <div class="item" data-name="Combo120" data-price="120.00" data-image="./img/carrossel-1.png">
+            <img src="./combo/combo3.jpg" alt="Combo coracao frango">
+            <div class="info">
+                <h2>Combo Coração de Frango</h2>
+                <span class="price">R$120,00</span>
+                <button class="add-to-cart">Adicionar ao carrinho</button>
+            </div>
+        </div>
+        <br>
+        <br>
+
+
+
+        <!------------------------------------------------------------------------------------------------------------------------->
+
+
+
+
+        <section id="bebidas" class="menu-combo" style="width: 800px; position: relative; left: 0px;">
+
+            <h1>BEBIDAS</h1>
+
+
+            <div class="item" data-name="Coca2L" data-price="12.50" data-image="./img/carrosel-2.png">
+                <img src="./bebidas/coca2l.png" alt="Coca 2L">
+                <div class="info">
+                    <h2>Coca-Cola 2L</h2>
+                    <span class="price">R$12,50</span>
+                    <button class="add-to-cart">Adicionar ao carrinho</button>
+                </div>
+            </div>
+
+
+
+            <div class="item" data-name="Coca Zero" data-price="7.00" data-image="./img/carrossel-1.png">
+                <img src="./bebidas/cocazeromini.png" alt="Coca zero 350ml">
+                <div class="info">
+                    <h2>Coca-Cola zero 350ml</h2>
+                    <span class="price">R$7,00</span>
+                    <button class="add-to-cart">Adicionar ao carrinho</button>
+                </div>
+            </div>
+
+
+
+            <div class="item" data-name="Fanta 2L" data-price="9.00" data-image="./img/carrossel-1.png">
+                <img src="./bebidas/fantal..png" alt="Fanta 2L">
+                <div class="info">
+                    <h2>Fanta Laranja 2L</h2>
+                    <span class="price">R$9,00</span>
+                    <button class="add-to-cart">Adicionar ao carrinho</button>
+                </div>
+            </div>
+
+
+
+            <div class="item" data-name="Kuat 2L" data-price="5.00" data-image="./img/carrossel-1.png">
+                <img src="./bebidas/kuat2l.png" alt="Kuat 2l">
+                <div class="info">
+                    <h2>Kuat 2L</h2>
+                    <span class="price">R$5,00</span>
+                    <button class="add-to-cart">Adicionar ao carrinho</button>
+                </div>
+            </div>
+            <br>
+            <br>
+
+
+
+
+            <!------------------------------------------------------------------------------------------------------------------------->
+
+
+
+
+
+            <section id="PIZZAS" class="menu-combo" style="width: 800px; position: relative; left: 0px;">
+
+                <h1>PIZZAS</h1>
+
+
+                <div class="item" data-name="Pizza Calabresa" data-price="22.50" data-image="./img/carrosel-2.png">
+                    <img src="./pizza/pizza-calabresa.jpeg" alt="Pizza Calabresa">
+                    <div class="info">
+                        <h2>Pizza calabresa</h2>
+                        <span class="price">R$22,50</span>
+                        <button class="add-to-cart">Adicionar ao carrinho</button>
+                    </div>
+                </div>
+
+
+
+                <div class="item" data-name="Pizza de Frango" data-price="25.00" data-image="./img/carrossel-1.png">
+                    <img src="./pizza/pizza-frango.jpeg" alt="pizza de frango">
+                    <div class="info">
+                        <h2>Pizza Frango</h2>
+                        <span class="price">R$25,00</span>
+                        <button class="add-to-cart">Adicionar ao carrinho</button>
+                    </div>
+                </div>
+
+
+
+                <div class="item" data-name="Pizza mista" data-price="30.00" data-image="./img/carrossel-1.png">
+                    <img src="./pizza/pizza-mista" alt="Pizza mista">
+                    <div class="info">
+                        <h2>Pizza Mista</h2>
+                        <span class="price">R$30,00</span>
+                        <button class="add-to-cart">Adicionar ao carrinho</button>
+                    </div>
+                </div>
+
+
+
+                <div class="item" data-name="Pizza Portuguesa" data-price="27.00" data-image="./img/carrossel-1.png">
+                    <img src="./pizza/portuguesa.jpg" alt="Pizza Portuguesa">
+                    <div class="info">
+                        <h2>Pizza Portuguesa</h2>
+                        <span class="price">R$37,00</span>
+                        <button class="add-to-cart">Adicionar ao carrinho</button>
+                    </div>
+                </div>
+                <br>
+                <br>
+
+
+
+
+
+
+                <!------------------------------------------------------------------------------------------------------------------------->
+
+
+
+
+
+
+
+                <section id="ACAI" class="menu-combo" style="width: 800px; position: relative; left: 0px;">
+                    <h1>ACAI</h1>
+                    <div class="item" data-name="Acai 1L" data-price="22.50" data-image="./img/carrosel-2.png">
+                        <img src="./acai/acai-1L.jpg" alt="Acai 1L">
+                        <div class="info">
+                            <h2>Açai 1L</h2>
+                            <span class="price">R$22,50</span>
+                            <button class="add-to-cart">Adicionar ao carrinho</button>
+                        </div>
+                    </div>
+
+                    <div class="item" data-name="Acai 200ml" data-price="4.00" data-image="./img/carrossel-1.png">
+                        <img src="./acai/acai-200ml.avif" alt="acai 200ml">
+                        <div class="info">
+                            <h2>Açai 200ml</h2>
+                            <span class="price">R$4,00</span>
+                            <button class="add-to-cart">Adicionar ao carrinho</button>
+                        </div>
+                    </div>
+                    <div class="item" data-name="acai 350ml" data-price="5.50" data-image="./img/carrossel-1.png">
+                        <img src="./acai/acai-350.jpg" alt="acai 300 ml">
+                        <div class="info">
+                            <h2>Açai 300ml</h2>
+                            <span class="price">R$5,50</span>
+                            <button class="add-to-cart">Adicionar ao carrinho</button>
+                        </div>
+                    </div>
+                    <div class="item" data-name="Acai de Frutas" data-price="15.00" data-image="./img/carrossel-1.png">
+                        <img src="./acai/acai-fruta.jpg" alt="Acai de Frutas">
+                        <div class="info">
+                            <h2>Açai de Frutas</h2>
+                            <span class="price">R$15,00</span>
+                            <button class="add-to-cart">Adicionar ao carrinho</button>
+                        </div>
+                    </div>
+                    <br>
+                    <br>
+
+</body>
+<script src="script.js"></script>
+
+</html>
