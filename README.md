@@ -42,11 +42,3 @@ O sistema foi pensado especialmente para celulares, garantindo uma navegação r
 Esse projeto foi feito com muito carinho e atenção aos detalhes para um comércio local, e me ajudou a exercitar desde a parte técnica até o atendimento ao cliente e personalização de acordo com o gosto do dono da lanchonete. Um exemplo real de como a programação pode ajudar pequenos negócios!
 
 Se quiser trocar uma ideia sobre projetos parecidos ou tiver uma ideia na cabeça, bora conversar! 🚀
-
----
-
-🔗 **Post no LinkedIn**:
-> “Fiz esse sistema de pedidos online para uma lanchonete aqui do bairro onde moro. 100% feito do zero com HTML, CSS e JS, com foco total em simplicidade, praticidade e funcionalidade. Cliente feliz, solução leve e funcionando direto no WhatsApp. 🍟📲  
-Orgulho de poder usar a programação pra ajudar comércios locais.  
-#freelancer #webdev #javascript #html #css #empreendedorismo”
-
