@@ -1,30 +1,32 @@
-🍔 Sistema de Pedidos Online - Lanchonete do Bairro
-Este projeto foi desenvolvido como um freelancer para uma lanchonete local, com o objetivo de facilitar a realização de pedidos online pelos clientes, integrando um carrinho de compras simples e direto com o WhatsApp da empresa.
+# 🍔 Sistema de Pedidos Online - Lanchonete do Bairro
 
-🔧 Tecnologias Utilizadas
-HTML5 e CSS3: Estrutura e estilo da página
+Este projeto foi desenvolvido como um **freelancer** para uma lanchonete local, com o objetivo de facilitar a realização de pedidos online pelos clientes, integrando um carrinho de compras simples e direto com o **WhatsApp** da empresa.
 
-JavaScript Vanilla (puro): Lógica de carrinho, formulário, cupom de desconto e integração
+---
 
-API do WhatsApp: Envio automático de pedidos com dados formatados via Click-to-Chat
+## 🔧 Tecnologias Utilizadas
 
-✨ Funcionalidades
-🛒 Adicionar e remover produtos do carrinho
+- **HTML5** e **CSS3**: Estrutura e estilo da página
+- **JavaScript Vanilla (puro)**: Lógica de carrinho, formulário, cupom de desconto e integração
+- **API do WhatsApp**: Envio automático de pedidos com dados formatados via *Click-to-Chat*
 
-🧾 Cálculo de total automático (com suporte a cupom de desconto)
+---
 
-💬 Envio do pedido diretamente via WhatsApp com:
+## ✨ Funcionalidades
 
-Nome, telefone e endereço do cliente
+- 🛒 Adicionar e remover produtos do carrinho  
+- 🧾 Cálculo de total automático (com suporte a **cupom de desconto**)  
+- 💬 Envio do pedido diretamente via **WhatsApp** com:
+  - Nome, telefone e endereço do cliente
+  - Forma de pagamento selecionada
+  - Lista de itens, quantidade e total (com ou sem desconto)
+- ⏰ Exibição de status *Aberto/Fechado* com base no horário atual (dinâmico)
 
-Forma de pagamento selecionada
+---
 
-Lista de itens, quantidade e total (com ou sem desconto)
+## 💡 Integração com API do WhatsApp
 
-⏰ Exibição de status Aberto/Fechado com base no horário atual (dinâmico)
-
-💡 Integração com API do WhatsApp
-Este projeto utiliza a API pública do WhatsApp (Click-to-Chat) para gerar links dinâmicos contendo o resumo do pedido, enviados diretamente ao número da lanchonete.
+Este projeto utiliza a **API pública do WhatsApp (Click-to-Chat)** para gerar links dinâmicos contendo o resumo do pedido, enviados diretamente ao número da lanchonete.  
 Exemplo de uso:
 
 js
