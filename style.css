@@ -1,5 +1,6 @@
 /* Reset básico e fonte personalizada */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Road+Rage&display=swap');
 
 * {
 	margin: 0;
@@ -48,6 +49,21 @@ body {
 	background: var(--secondary-color);
 }
 
+.background {
+	margin: 0;
+	padding: 0;
+	background-image: url('sua-imagem.jpg');
+	/* Coloque o caminho da imagem aqui */
+	background-size: cover;
+	/* Faz a imagem cobrir toda a tela */
+	background-position: center;
+	/* Centraliza a imagem */
+	background-repeat: no-repeat;
+	/* Impede que a imagem se repita */
+	height: 100vh;
+	/* Altura total da tela */
+}
+
 /* Header e navegação */
 header {
 	background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
@@ -91,7 +107,6 @@ nav ul li a:hover {
 }
 
 .status {
-
 	font-weight: 600;
 	padding: 8px 16px;
 	border-radius: 10px;
@@ -152,21 +167,22 @@ h1 {
 	text-align: center;
 	margin: 70px 0;
 	color: var(--primary-color);
-	font-size: 3.2rem;
-	font-weight: 700;
+	font-family: "Road Rage", sans-serif;
+	font-size: 4.8rem;
+	font-weight: 600;
 	text-transform: uppercase;
 	position: relative;
 	padding-bottom: 50px;
-	letter-spacing: 5px;
+	letter-spacing: 15px;
 }
 
 h1::after {
 	content: '';
 	position: absolute;
-	bottom: 0;
+	bottom: 20px;
 	left: 50%;
 	transform: translateX(-50%);
-	width: 80px;
+	width: 180px;
 	height: 4px;
 	background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
 	border-radius: 2px;
@@ -593,49 +609,131 @@ h1::after {
 	height: 180px;
 }
 
-/* Responsividade */
-@media (min-width: 768px) {
+/* Responsividade - Media Queries Atualizados */
+
+/* Tablets (601px até 1024px) */
+@media (min-width: 601px) and (max-width: 10px) {
+	header {
+		padding: 1.5rem;
+	}
+
+	nav ul li a {
+		left: 0;
+		padding: 8px 12px;
+		font-size: 0.9rem;
+	}
+
+	h1 {
+		font-size: 2.5rem;
+		margin: 50px 0;
+		padding-bottom: 30px;
+		letter-spacing: 3px;
+	}
 
 	.menu,
 	.menu-combo {
-		grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+		grid-template-columns: repeat(2, 1fr);
+		max-width: 430px;
 	}
 
-	.carousel {
-		overflow-x: visible;
-		display: grid;
-		grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+	.item {
+		flex-direction: row;
+	}
+
+	.item img {
+		width: 120px;
+		height: 120px;
+	}
+
+	.info h2 {
+		font-size: 1.1rem;
+	}
+
+	.price {
+		font-size: 1.2rem;
+	}
+
+	.add-to-cart {
+		padding: 10px 16px;
+		font-size: 0.8rem;
+	}
+
+	.cart-container {
+		width: 350px;
+		right: -350px;
+	}
+
+	.your-cart {
+		font-size: 1.5rem;
 	}
 
 	.carousel .item {
-		min-width: auto;
+		min-width: 230px;
 	}
 }
 
-@media (max-width: 767px) {
+/* Smartphones (até 600px) */
+@media (max-width: 600px) {
+
 	header {
 		flex-direction: column;
 		gap: 15px;
-		padding: 10px;
+		padding: 15px 10px;
 	}
 
 	nav ul {
 		justify-content: center;
-		font-size: 0.9rem;
-		gap: 8px;
+		font-size: 1.2rem;
+		gap: 9px;
+		padding: 5px 0;
 	}
 
 	nav ul li a {
-		padding: 6px 12px;
+		padding: 6px 10px;
+		left: 0;
+		letter-spacing: 0;
 	}
 
 	.status {
-		font-size: 0.8rem;
-		padding: 6px 12px;
+		font-size: 0.75rem;
+		padding: 5px 10px;
+		margin-left: -10%;
+		margin-top: 5px;
 	}
 
 	#cart-btn {
-		padding: 8px 15px;
+		padding: 6px 12px;
+		font-size: 1rem;
+		position: relative;
+		left: 40%;
+	}
+
+	#cart-count {
+		width: 20px;
+		height: 20px;
+		font-size: 0.7rem;
+	}
+
+	main {
+		padding: 20px 10px;
+	}
+
+	h1 {
+		font-size: 1.8rem;
+		margin: 40px 0;
+		padding-bottom: 25px;
+		letter-spacing: 2px;
+		padding-top: 30%;
+	}
+
+	h1::after {
+		width: 60px;
+		height: 3px;
+	}
+
+	.menu,
+	.menu-combo {
+		gap: 20px;
 	}
 
 	.item {
@@ -644,98 +742,134 @@ h1::after {
 
 	.item img {
 		width: 100%;
-		height: 200px;
+		height: 180px;
 	}
 
 	.info {
 		padding: 15px;
 	}
 
-	.cart-container {
-		width: 100%;
-		right: -100%;
+	.info h2 {
+		font-size: 1.1rem;
 	}
 
-	h1 {
-		font-size: 1.8rem;
+	.price {
+		font-size: 1.2rem;
+		margin-bottom: 12px;
 	}
 
 	.add-to-cart {
 		width: 100%;
-	}
-}
-
-/* Efeitos e animações adicionais */
-@keyframes float {
-	0% {
-		transform: translateY(0px);
+		padding: 10px 15px;
+		font-size: 0.85rem;
 	}
 
-	50% {
-		transform: translateY(-10px);
+	.cart-container {
+		width: 100%;
+		right: -100%;
+		border-left: none;
+		border-top: 4px solid var(--primary-color);
 	}
 
-	100% {
-		transform: translateY(0px);
-	}
-}
-
-@keyframes slideIn {
-	from {
-		transform: translateY(50px);
-		opacity: 0;
+	.cart-header {
+		padding-bottom: 10px;
+		margin-bottom: 15px;
 	}
 
-	to {
-		transform: translateY(0);
-		opacity: 1;
+	.your-cart {
+		font-size: 1.3rem;
 	}
-}
 
-.item {
-	animation: slideIn 0.6s ease forwards;
-	animation-delay: calc(var(--order) * 0.1s);
-	opacity: 0;
-}
+	.cart-item-info {
+		gap: 10px;
+	}
 
-/* Badge para promoções */
-.badge {
-	position: absolute;
-	top: 10px;
-	right: 10px;
-	background: var(--primary-color);
-	color: white;
-	padding: 5px 10px;
-	border-radius: 20px;
-	font-size: 0.8rem;
-	font-weight: 600;
-	z-index: 2;
-	box-shadow: var(--shadow-sm);
-	transform: rotate(3deg);
-}
+	.cart-item-image {
+		width: 50px;
+		height: 50px;
+	}
 
-/* Efeito de hover suave nas imagens */
-.item img {
-	filter: brightness(95%);
-	transition: var(--transition);
-}
+	.cart-item-name {
+		font-size: 0.9rem;
+	}
 
-.item:hover img {
-	filter: brightness(105%);
-}
+	.cart-item-price {
+		font-size: 0.9rem;
+	}
 
-/* Estilo para botões selecionados no menu */
-nav ul li a.active {
-	background-color: rgba(255, 255, 255, 0.2);
-	box-shadow: var(--shadow-sm);
-	font-weight: 700;
-}
+	.qty-btn {
+		width: 25px;
+		height: 25px;
+	}
 
-/* Sombra na seção ativa */
-section.active {
-	box-shadow: 0 0 30px rgba(255, 107, 0, 0.1);
-	background-color: white;
-	border-radius: 15px;
-	padding: 30px;
-	margin-bottom: 40px;
+	.cart-total {
+		font-size: 1.2rem;
+		margin: 15px 0;
+		padding: 10px 0;
+	}
+
+	.checkout-btn {
+		padding: 12px;
+		font-size: 1rem;
+	}
+
+	.notification {
+		left: 20px;
+		right: 20px;
+		padding: 12px 20px;
+		border-radius: 15px;
+		bottom: 10px;
+	}
+
+	/* Para elementos de carrossel em celulares */
+	.carousel .item {
+		min-width: 250px;
+	}
+
+	.carousel .item img {
+		height: 160px;
+	}
+
+	/* Ajustes adicionais para melhor experiência em dispositivos pequenos */
+	#secao-alvo {
+		padding-top: 40px;
+		margin-top: -30px;
+		display: flex;
+		flex-direction: column;
+	}
+
+	#bebidas {
+		padding-top: 40px;
+		margin-top: -30px;
+		display: flex;
+		flex-direction: column;
+		max-width: 430px;
+	}
+
+	#PIZZAS {
+		padding-top: 40px;
+		margin-top: -30px;
+		display: flex;
+		flex-direction: column;
+		max-width: 430px;
+	}
+
+	#ACAI {
+		padding-top: 40px;
+		margin-top: -30px;
+		display: flex;
+		flex-direction: column;
+		max-width: 430px;
+	}
+
+
+	.item:hover {
+		transform: translateY(-5px);
+	}
+
+	/* Melhor visualização de notificações em celular */
+	.notification {
+		text-align: center;
+		justify-content: center;
+	}
 }

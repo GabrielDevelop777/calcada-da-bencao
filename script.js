@@ -38,20 +38,39 @@ document.addEventListener("DOMContentLoaded", function () {
 	closeCartBtn.style.background = "none";
 	closeCartBtn.style.color = "red";
 
-	// Exibir ou ocultar o carrinho ao clicar no botão
+
 	cartBtn.addEventListener("click", () => {
-		// Verifica se o carrinho está vazio
-		if (cart.length === 0) {
-			// Verifique a variável cart
-			alert("Seu carrinho está vazio");
-		} else {
-			cartContainer.style.display =
-				cartContainer.style.display === "none" ||
-				cartContainer.style.display === ""
-					? "flex"
-					: "none";
+		const agora = new Date();
+		const hora = agora.getHours();
+	
+		// Simulação do carrinho
+		let cart = []; // Substitua isso com seu array real
+		const carrinhoVazio = cart.length === 0;
+	
+		// Verifica se está fora do horário de funcionamento (das 2h às 18h)
+		if (hora >= 2 && hora < 18) {
+			Swal.fire({
+				title: 'Loja Fechada!',
+				text: 'Abriremos a partir das 18h.',
+				icon: 'error',
+				confirmButtonText: 'Ok'
+			});
+			return;
 		}
+	
+		// Se o carrinho estiver vazio e for depois das 18h ou antes das 2h (horário de funcionamento)
+		if (carrinhoVazio) {
+			alert("Seu carrinho está vazio");
+			return;
+		}
+	
+		// Se estiver dentro do horário e o carrinho tiver itens, mostrar o carrinho
+		cartContainer.style.display =
+			cartContainer.style.display === "none" || cartContainer.style.display === ""
+				? "flex"
+				: "none";
 	});
+	
 
 	// Fechar carrinho ao clicar no botão de fechar
 	closeCartBtn.addEventListener("click", () => {
