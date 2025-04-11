@@ -1,0 +1,253 @@
+/* ============================
+   RESPONSIVIDADE - TELAS MÉDIAS
+   ============================ */
+@media (min-width: 601px) and (max-width: 1024px) {
+
+    /* Header e navegação */
+    header {
+        padding: 1.5rem;
+    }
+
+    nav ul li a {
+        left: 0;
+        padding: 8px 12px;
+        font-size: 0.9rem;
+    }
+
+    /* Títulos */
+    h1 {
+        font-size: 2.5rem;
+        margin: 50px 0;
+        padding-bottom: 30px;
+        letter-spacing: 3px;
+    }
+
+    /* Layout de itens */
+    .menu,
+    .menu-combo {
+        grid-template-columns: repeat(1, 1fr);
+        max-width: 430px;
+    }
+
+    .item {
+        flex-direction: row;
+    }
+
+    .item img {
+        width: 120px;
+        height: 120px;
+    }
+
+    /* Informações dos itens */
+    .info h2 {
+        font-size: 1.1rem;
+    }
+
+    .price {
+        font-size: 1.2rem;
+    }
+
+    .add-to-cart {
+        padding: 10px 16px;
+        font-size: 0.8rem;
+    }
+
+    /* Carrinho */
+    .cart-container {
+        width: 350px;
+        right: -350px;
+    }
+
+    .your-cart {
+        font-size: 1.5rem;
+    }
+
+    /* Carousel */
+    .carousel .item {
+        min-width: 230px;
+    }
+}
+
+/* ============================
+   RESPONSIVIDADE - TELAS PEQUENAS
+   ============================ */
+@media (max-width: 600px) {
+
+    /* Header e navegação */
+    header {
+        flex-direction: column;
+        gap: 15px;
+        padding: 15px 10px;
+    }
+
+    nav ul {
+        justify-content: center;
+        font-size: 1.2rem;
+        gap: 9px;
+        padding: 5px 0;
+    }
+
+    nav ul li a {
+        padding: 6px 10px;
+        left: 0;
+        letter-spacing: 0;
+    }
+
+    .status {
+        font-size: 0.75rem;
+        padding: 5px 10px;
+        margin-left: -10%;
+        margin-top: 5px;
+    }
+
+    #cart-btn {
+        padding: 6px 12px;
+        font-size: 1rem;
+        position: relative;
+        left: 40%;
+    }
+
+    #cart-count {
+        width: 20px;
+        height: 20px;
+        font-size: 0.7rem;
+    }
+
+    /* Conteúdo principal */
+    main {
+        padding: 20px 10px;
+    }
+
+    h1 {
+        font-size: 1.8rem;
+        margin: 40px 0;
+        padding-bottom: 25px;
+        letter-spacing: 2px;
+        padding-top: 30%;
+    }
+
+    h1::after {
+        width: 60px;
+        height: 3px;
+    }
+
+    /* Layout de itens */
+    .menu,
+    .menu-combo {
+        gap: 20px;
+    }
+
+    .item {
+        flex-direction: column;
+    }
+
+    .item img {
+        width: 100%;
+        height: 180px;
+    }
+
+    .info {
+        padding: 15px;
+    }
+
+    .info h2 {
+        font-size: 1.1rem;
+    }
+
+    .price {
+        font-size: 1.2rem;
+        margin-bottom: 12px;
+    }
+
+    .add-to-cart {
+        width: 100%;
+        padding: 10px 15px;
+        font-size: 0.85rem;
+    }
+
+    /* Carrinho */
+    .cart-container {
+        width: 100%;
+        right: -100%;
+        border-left: none;
+        border-top: 4px solid var(--primary-color);
+    }
+
+    .cart-header {
+        padding-bottom: 10px;
+        margin-bottom: 15px;
+    }
+
+    .your-cart {
+        font-size: 1.3rem;
+    }
+
+    .cart-item-info {
+        gap: 10px;
+    }
+
+    .cart-item-image {
+        width: 50px;
+        height: 50px;
+    }
+
+    .cart-item-name {
+        font-size: 0.9rem;
+    }
+
+    .cart-item-price {
+        font-size: 0.9rem;
+    }
+
+    .qty-btn {
+        width: 25px;
+        height: 25px;
+    }
+
+    .cart-total {
+        font-size: 1.2rem;
+        margin: 15px 0;
+        padding: 10px 0;
+    }
+
+    .checkout-btn {
+        padding: 12px;
+        font-size: 1rem;
+    }
+
+    /* Notificações */
+    .notification {
+        left: 20px;
+        right: 20px;
+        padding: 12px 20px;
+        border-radius: 15px;
+        bottom: 10px;
+        text-align: center;
+        justify-content: center;
+    }
+
+    /* Carousel */
+    .carousel .item {
+        min-width: 250px;
+    }
+
+    .carousel .item img {
+        height: 160px;
+    }
+
+    /* Seções especiais */
+    #secao-alvo,
+    #bebidas,
+    #PIZZAS,
+    #ACAI {
+        padding-top: 40px;
+        margin-top: -30px;
+        display: flex;
+        flex-direction: column;
+        max-width: 430px;
+    }
+
+    .item:hover {
+        transform: translateY(-5px);
+    }
+}
