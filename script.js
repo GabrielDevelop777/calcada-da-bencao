@@ -1,11 +1,74 @@
-let cart = []; // Tornar global
+// Adicionar botão de seta para retornar ao topo após 3 scrolls
+document.addEventListener("DOMContentLoaded", () => {
+	// Criar o botão de seta
+	const scrollTopButton = document.createElement("div");
+	scrollTopButton.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="16" fill="currentColor" class="bi bi-arrow-90deg-up" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M4.854 1.146a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L4 2.707V12.5A2.5 2.5 0 0 0 6.5 15h8a.5.5 0 0 0 0-1h-8A1.5 1.5 0 0 1 5 12.5V2.707l3.146 3.147a.5.5 0 1 0 .708-.708z"/>
+</svg>`;
+	scrollTopButton.id = "scroll-to-top";
+	scrollTopButton.style.position = "fixed";
+	scrollTopButton.style.right = "20px";
+	scrollTopButton.style.bottom = "30px";
+	scrollTopButton.style.width = "50px";
+	scrollTopButton.style.height = "50px";
+	scrollTopButton.style.backgroundColor = "red";
+	scrollTopButton.style.color = "white";
+	scrollTopButton.style.borderRadius = "50%";
+	scrollTopButton.style.display = "flex";
+	scrollTopButton.style.justifyContent = "center";
+	scrollTopButton.style.alignItems = "center";
+	scrollTopButton.style.fontSize = "30px";
+	scrollTopButton.style.fontWeight = "900";
+	scrollTopButton.style.cursor = "pointer";
+	scrollTopButton.style.boxShadow = "0 2px 5px rgba(0,0,0,0.3)";
+	scrollTopButton.style.opacity = "0";
+	scrollTopButton.style.transition = "opacity 0.5s ease";
+	scrollTopButton.style.zIndex = "1000";
+
+	// Adicionar ao body
+	document.body.appendChild(scrollTopButton);
+
+	// Contador de scroll
+	let scrollCount = 0;
+
+	// Monitorar eventos de scroll
+	window.addEventListener("scroll", () => {
+		// Incrementar contador apenas quando o scroll for significativo
+		if (window.scrollY > 300 && scrollCount < 3) {
+			scrollCount++;
+		}
+
+		// Mostrar o botão após 3 scrolls
+		if (scrollCount >= 3) {
+			scrollTopButton.style.opacity = "1";
+		} else {
+			scrollTopButton.style.opacity = "0";
+		}
+
+		// Ocultar botão quando estiver no topo
+		if (window.scrollY < 100) {
+			scrollTopButton.style.opacity = "0";
+		}
+	});
+
+	// Adicionar evento de clique para rolar para o topo
+	scrollTopButton.addEventListener("click", () => {
+		// Rolar suavemente para o topo
+		window.scrollTo({
+			top: 0,
+			behavior: "smooth",
+		});
+	});
+});
+
+const cart = []; // Tornar global
 
 // Definir o cupom de desconto válido
 const validCoupon = "DESCONTO10";
 const discountPercentage = 10; // 10% de desconto
 
 // Carrinho
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", () => {
 	const cartBtn = document.getElementById("cart-btn");
 	const cartContainer = document.getElementById("cart-container");
 	const closeCartBtn = document.getElementById("close-cart");
@@ -38,39 +101,42 @@ document.addEventListener("DOMContentLoaded", function () {
 	closeCartBtn.style.background = "none";
 	closeCartBtn.style.color = "red";
 
-
 	cartBtn.addEventListener("click", () => {
 		const agora = new Date();
 		const hora = agora.getHours();
-	
-		// Simulação do carrinho
-		let cart = []; // Substitua isso com seu array real
+
+		// Verificação do carrinho real
 		const carrinhoVazio = cart.length === 0;
-	
+
 		// Verifica se está fora do horário de funcionamento (das 2h às 18h)
 		if (hora >= 2 && hora < 18) {
 			Swal.fire({
-				title: 'Loja Fechada!',
-				text: 'Abriremos a partir das 18h.',
-				icon: 'error',
-				confirmButtonText: 'Ok'
+				title: "Loja Fechada!",
+				text: "Abriremos a partir das 18h.",
+				icon: "error",
+				confirmButtonText: "Ok",
 			});
 			return;
 		}
-	
+
 		// Se o carrinho estiver vazio e for depois das 18h ou antes das 2h (horário de funcionamento)
 		if (carrinhoVazio) {
-			alert("Seu carrinho está vazio");
+			Swal.fire({
+				title: "Seu carrinho está vazio!",
+				text: "Volte e escolha um pedido.",
+				icon: "error",
+				confirmButtonText: "Ok",
+			});
 			return;
 		}
-	
+
 		// Se estiver dentro do horário e o carrinho tiver itens, mostrar o carrinho
 		cartContainer.style.display =
-			cartContainer.style.display === "none" || cartContainer.style.display === ""
+			cartContainer.style.display === "none" ||
+			cartContainer.style.display === ""
 				? "flex"
 				: "none";
 	});
-	
 
 	// Fechar carrinho ao clicar no botão de fechar
 	closeCartBtn.addEventListener("click", () => {
@@ -78,11 +144,12 @@ document.addEventListener("DOMContentLoaded", function () {
 	});
 
 	// Adicionar item ao carrinho
+	// Adicionar item ao carrinho
 	addToCartButtons.forEach((button) => {
 		button.addEventListener("click", function () {
 			const item = this.closest(".item");
 			const name = item.getAttribute("data-name");
-			const price = parseFloat(item.getAttribute("data-price"));
+			const price = Number.parseFloat(item.getAttribute("data-price"));
 			const image = item.querySelector("img").src;
 
 			const existingItem = cart.find((i) => i.name === name);
@@ -93,9 +160,20 @@ document.addEventListener("DOMContentLoaded", function () {
 			}
 
 			updateCart();
+
+			// Adicionar mensagem de confirmação
+			Swal.fire({
+				title: "Produto adicionado!",
+				text: `${name} foi adicionado ao seu carrinho`,
+				icon: "success",
+				toast: true,
+				position: "top-end",
+				showConfirmButton: false,
+				timer: 2000,
+				timerProgressBar: true,
+			});
 		});
 	});
-
 	// Atualizar carrinho com a barra e o formulário
 	const updateCart = () => {
 		cartItemsContainer.innerHTML = "";
@@ -178,7 +256,7 @@ document.addEventListener("DOMContentLoaded", function () {
 		// Adicionar eventos de remoção
 		document.querySelectorAll(".remove-item").forEach((button) => {
 			button.addEventListener("click", function () {
-				const index = parseInt(this.getAttribute("data-index"));
+				const index = Number.parseInt(this.getAttribute("data-index"));
 				cart.splice(index, 1);
 				updateCart();
 			});
@@ -193,7 +271,7 @@ document.addEventListener("DOMContentLoaded", function () {
 		// Adicionar evento ao input de cupom
 		const cupomInput = document.getElementById("input-cupom");
 		if (cupomInput) {
-			cupomInput.addEventListener("input", function() {
+			cupomInput.addEventListener("input", () => {
 				aplicarCupom();
 			});
 		}
@@ -202,75 +280,75 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // Função para aplicar o cupom de desconto
 const aplicarCupom = () => {
-    const cupomInput = document.getElementById("input-cupom");
-    if (!cupomInput) return false;
-    
-    const cupomValue = cupomInput.value.trim().toUpperCase();
-    
-    // Encontrar elemento para mostrar mensagens sobre o cupom
-    let cupomMessage = document.getElementById("cupom-message");
-    if (!cupomMessage) {
-        cupomMessage = document.createElement("div");
-        cupomMessage.id = "cupom-message";
-        cupomMessage.style.fontSize = "14px";
-        cupomMessage.style.marginTop = "5px";
-        cupomMessage.style.fontWeight = "bold";
-        cupomInput.parentNode.insertBefore(cupomMessage, cupomInput.nextSibling);
-    }
-    
-    // Verificar se o cupom é válido
-    if (cupomValue === validCoupon) {
-        cupomMessage.textContent = "Cupom DESCONTO10 aplicado! 10% de desconto";
-        cupomMessage.style.color = "green";
-        
-        // Exibir o total com desconto no carrinho
-        exibirDescontoNoCarrinho();
-        
-        return true;
-    } else if (cupomValue !== "") {
-        cupomMessage.textContent = "Cupom inválido";
-        cupomMessage.style.color = "red";
-        
-        // Remover informações de desconto se houver
-        const discountInfoElement = document.getElementById("discount-info");
-        if (discountInfoElement) {
-            discountInfoElement.remove();
-        }
-    } else {
-        cupomMessage.textContent = "";
-        
-        // Remover informações de desconto se houver
-        const discountInfoElement = document.getElementById("discount-info");
-        if (discountInfoElement) {
-            discountInfoElement.remove();
-        }
-    }
-    
-    return false;
+	const cupomInput = document.getElementById("input-cupom");
+	if (!cupomInput) return false;
+
+	const cupomValue = cupomInput.value.trim().toUpperCase();
+
+	// Encontrar elemento para mostrar mensagens sobre o cupom
+	let cupomMessage = document.getElementById("cupom-message");
+	if (!cupomMessage) {
+		cupomMessage = document.createElement("div");
+		cupomMessage.id = "cupom-message";
+		cupomMessage.style.fontSize = "14px";
+		cupomMessage.style.marginTop = "5px";
+		cupomMessage.style.fontWeight = "bold";
+		cupomInput.parentNode.insertBefore(cupomMessage, cupomInput.nextSibling);
+	}
+
+	// Verificar se o cupom é válido
+	if (cupomValue === validCoupon) {
+		cupomMessage.textContent = "Cupom DESCONTO10 aplicado! 10% de desconto";
+		cupomMessage.style.color = "green";
+
+		// Exibir o total com desconto no carrinho
+		exibirDescontoNoCarrinho();
+
+		return true;
+	} else if (cupomValue !== "") {
+		cupomMessage.textContent = "Cupom inválido";
+		cupomMessage.style.color = "red";
+
+		// Remover informações de desconto se houver
+		const discountInfoElement = document.getElementById("discount-info");
+		if (discountInfoElement) {
+			discountInfoElement.remove();
+		}
+	} else {
+		cupomMessage.textContent = "";
+
+		// Remover informações de desconto se houver
+		const discountInfoElement = document.getElementById("discount-info");
+		if (discountInfoElement) {
+			discountInfoElement.remove();
+		}
+	}
+
+	return false;
 };
 
 // Função para exibir desconto no carrinho
 const exibirDescontoNoCarrinho = () => {
-    const cartTotal = document.getElementById("cart-total");
-    
-    if (!cartTotal) return;
-    
-    const currentTotal = parseFloat(cartTotal.textContent);
-    const discountAmount = currentTotal * (discountPercentage / 100);
-    const discountedTotal = currentTotal - discountAmount;
-    
-    // Atualizar ou criar elemento para mostrar informações do desconto
-    let discountInfoElement = document.getElementById("discount-info");
-    if (!discountInfoElement) {
-        discountInfoElement = document.createElement("div");
-        discountInfoElement.id = "discount-info";
-        discountInfoElement.style.marginTop = "10px";
-        discountInfoElement.style.color = "green";
-        discountInfoElement.style.fontWeight = "bold";
-        cartTotal.parentNode.appendChild(discountInfoElement);
-    }
-    
-    discountInfoElement.innerHTML = `
+	const cartTotal = document.getElementById("cart-total");
+
+	if (!cartTotal) return;
+
+	const currentTotal = Number.parseFloat(cartTotal.textContent);
+	const discountAmount = currentTotal * (discountPercentage / 100);
+	const discountedTotal = currentTotal - discountAmount;
+
+	// Atualizar ou criar elemento para mostrar informações do desconto
+	let discountInfoElement = document.getElementById("discount-info");
+	if (!discountInfoElement) {
+		discountInfoElement = document.createElement("div");
+		discountInfoElement.id = "discount-info";
+		discountInfoElement.style.marginTop = "10px";
+		discountInfoElement.style.color = "green";
+		discountInfoElement.style.fontWeight = "bold";
+		cartTotal.parentNode.appendChild(discountInfoElement);
+	}
+
+	discountInfoElement.innerHTML = `
         <div>Subtotal: R$ ${currentTotal.toFixed(2)}</div>
         <div>Desconto (${discountPercentage}%): -R$ ${discountAmount.toFixed(2)}</div>
         <div>Total com desconto: R$ ${discountedTotal.toFixed(2)}</div>
@@ -284,7 +362,7 @@ const validarFormulario = () => {
 	const endereco = document.getElementById("endereco").value.trim();
 
 	// Garantir que o contêiner de erro esteja dentro do carrinho
-	let cartContainer = document.getElementById("cart-container"); // Certifique-se de que o contêiner do carrinho tenha este ID
+	const cartContainer = document.getElementById("cart-container"); // Certifique-se de que o contêiner do carrinho tenha este ID
 	let errorContainer = document.getElementById("error-container");
 
 	if (!errorContainer) {
@@ -331,12 +409,12 @@ const enviarPedido = () => {
 	const telefone = document.getElementById("telefone").value.trim();
 	const endereco = document.getElementById("endereco").value.trim();
 	const pagamento = document.getElementById("pagamento").value;
-	
+
 	const cupomInput = document.getElementById("input-cupom");
 	const cupom = cupomInput ? cupomInput.value.trim().toUpperCase() : "";
 
 	// Número do WhatsApp
-	let numeroWhatsApp = "5521969720690"; // Número do WhatsApp do restaurante
+	const numeroWhatsApp = "5521969720690"; // Número do WhatsApp do restaurante
 
 	// Mensagem inicial com os dados do cliente
 	let mensagem = `  RESUMO DO PEDIDO:\n`;
@@ -357,13 +435,13 @@ const enviarPedido = () => {
 	});
 
 	// Total do pedido
-	let total = cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
-	
+	const total = cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
+
 	// Aplicar desconto se o cupom for válido
 	if (cupomValido) {
 		const valorDesconto = total * (discountPercentage / 100);
 		const totalComDesconto = total - valorDesconto;
-		
+
 		mensagem += `\nSubtotal: R$ ${total.toFixed(2)}`;
 		mensagem += `\nDesconto (${discountPercentage}%): -R$ ${valorDesconto.toFixed(2)}`;
 		mensagem += `\nTotal com desconto: R$ ${totalComDesconto.toFixed(2)}`;
@@ -372,14 +450,14 @@ const enviarPedido = () => {
 	}
 
 	// Criar o link para o WhatsApp
-	let link = `https://api.whatsapp.com/send?phone=${numeroWhatsApp}&text=${encodeURIComponent(mensagem)}`;
+	const link = `https://api.whatsapp.com/send?phone=${numeroWhatsApp}&text=${encodeURIComponent(mensagem)}`;
 
 	// Abrir o WhatsApp com a mensagem pré-preenchida
 	window.open(link, "_blank");
 };
 
 // Status de aberto ou fechado (separado do carrinho)
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", () => {
 	const statusDiv = document.querySelector(".status");
 
 	const atualizarStatus = () => {
@@ -400,10 +478,9 @@ document.addEventListener("DOMContentLoaded", function () {
 			statusDiv.style.padding = "2px 20px";
 			statusDiv.style.fontWeight = "600";
 			statusDiv.style.width = "130px";
-			statusDiv.style.position = "relative";
-			statusDiv.style.top = "50px";
+			statusDiv.style.position = "absolute";
 			statusDiv.style.left = "46%";
-
+			statusDiv.style.marginTop = "30px";
 		} else {
 			statusDiv.innerHTML = "⌛ Fechado";
 			statusDiv.style.backgroundColor = "#d60000"; // Vermelho
@@ -412,8 +489,7 @@ document.addEventListener("DOMContentLoaded", function () {
 			statusDiv.style.padding = "2px 19px";
 			statusDiv.style.fontWeight = "600";
 			statusDiv.style.width = "130px";
-			statusDiv.style.position = "relative";
-			statusDiv.style.top = "50px";
+			statusDiv.style.position = "absolute";
 			statusDiv.style.left = "46%";
 		}
 	};

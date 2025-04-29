@@ -1,140 +1,67 @@
-/* ============================
-   RESPONSIVIDADE - TELAS MÉDIAS
-   ============================ */
-@media (min-width: 601px) and (max-width: 1024px) {
+@media screen and (max-width: 1024px) {
+    main {
+        max-width: 90%;
+    }
 
-    /* Header e navegação */
+    .status {
+        margin-left: -50px;
+        transform: translate(-50%, -50%);
+    }
+
+    h1 {
+        font-size: 3.8rem;
+        margin: 50px 0;
+        letter-spacing: 10px;
+        padding-bottom: 40px;
+    }
+
+    .menu,
+    .menu-combo {
+        width: 100%;
+    }
+
+    /* Ajustes do cabeçalho para tablets */
     header {
         padding: 1.5rem;
     }
 
+    nav ul {
+        gap: 10px;
+    }
+
     nav ul li a {
         left: 0;
-        padding: 8px 12px;
         font-size: 0.9rem;
-    }
-
-    /* Títulos */
-    h1 {
-        font-size: 2.5rem;
-        margin: 50px 0;
-        padding-bottom: 30px;
-        letter-spacing: 3px;
-    }
-
-    /* Layout de itens */
-    .menu,
-    .menu-combo {
-        grid-template-columns: repeat(1, 1fr);
-        max-width: 430px;
-    }
-
-    .item {
-        flex-direction: row;
-    }
-
-    .item img {
-        width: 120px;
-        height: 120px;
-    }
-
-    /* Informações dos itens */
-    .info h2 {
-        font-size: 1.1rem;
-    }
-
-    .price {
-        font-size: 1.2rem;
-    }
-
-    .add-to-cart {
-        padding: 10px 16px;
-        font-size: 0.8rem;
-    }
-
-    /* Carrinho */
-    .cart-container {
-        width: 350px;
-        right: -350px;
-    }
-
-    .your-cart {
-        font-size: 1.5rem;
-    }
-
-    /* Carousel */
-    .carousel .item {
-        min-width: 230px;
+        padding: 6px 12px;
     }
 }
 
-/* ============================
-   RESPONSIVIDADE - TELAS PEQUENAS
-   ============================ */
-@media (max-width: 600px) {
-
-    /* Header e navegação */
+/* Tablets menores e dispositivos móveis grandes */
+@media screen and (max-width: 768px) {
     header {
         flex-direction: column;
         gap: 15px;
-        padding: 15px 10px;
+        padding: 1rem;
+    }
+
+    nav {
+        width: 100%;
     }
 
     nav ul {
         justify-content: center;
-        font-size: 1.2rem;
-        gap: 9px;
-        padding: 5px 0;
+        width: 100%;
     }
 
     nav ul li a {
-        padding: 6px 10px;
-        left: 0;
-        letter-spacing: 0;
-    }
-
-    .status {
-        font-size: 0.75rem;
+        font-size: 0.8rem;
         padding: 5px 10px;
-        margin-left: -10%;
-        margin-top: 5px;
-    }
-
-    #cart-btn {
-        padding: 6px 12px;
-        font-size: 1rem;
-        position: relative;
-        left: 40%;
-    }
-
-    #cart-count {
-        width: 20px;
-        height: 20px;
-        font-size: 0.7rem;
-    }
-
-    /* Conteúdo principal */
-    main {
-        padding: 20px 10px;
     }
 
     h1 {
-        font-size: 1.8rem;
+        font-size: 3rem;
+        letter-spacing: 5px;
         margin: 40px 0;
-        padding-bottom: 25px;
-        letter-spacing: 2px;
-        padding-top: 30%;
-    }
-
-    h1::after {
-        width: 60px;
-        height: 3px;
-    }
-
-    /* Layout de itens */
-    .menu,
-    .menu-combo {
-        gap: 20px;
     }
 
     .item {
@@ -143,7 +70,152 @@
 
     .item img {
         width: 100%;
-        height: 180px;
+        height: 200px;
+    }
+
+    /* Ajustes do carrinho para tablets */
+    .cart-container {
+        width: 350px;
+    }
+
+    .cart-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .cart-item-info {
+        width: 100%;
+    }
+
+    .cart-item-qty {
+        width: 100%;
+        justify-content: space-between;
+    }
+}
+
+/* Ajustes para o menu de navegação em todas as telas pequenas */
+@media screen and (max-width: 768px) {
+
+    /* Transformar o menu em um menu hambúrguer em telas menores */
+    nav {
+        position: relative;
+    }
+
+    /* Menu móvel */
+    .menu-mobile {
+        display: block;
+        background: var(--primary-color);
+        padding: 10px;
+        text-align: center;
+        font-weight: bold;
+        color: white;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+
+    nav ul {
+        overflow-x: auto;
+        white-space: nowrap;
+        scrollbar-width: thin;
+    }
+
+    nav ul::-webkit-scrollbar {
+        height: 3px;
+    }
+}
+
+
+/* Ajustes para as seções de carousel */
+@media screen and (max-width: 768px) {
+    .carousel .item {
+        min-width: 230px;
+    }
+
+    .carousel .item img {
+        height: 150px;
+    }
+}
+
+/* Ajustes específicos para a seção de pizzas, combos e açaí */
+@media screen and (max-width: 768px) {
+    .menu-combo {
+        width: 100% !important;
+        left: 0 !important;
+    }
+
+    .status {
+        margin-left: -50px;
+        transform: translate(-50%, -50%);
+    }
+}
+
+/* Ajustes específicos para orientação paisagem em dispositivos móveis */
+@media screen and (max-height: 500px) {
+    header {
+        padding: 0.5rem 1rem;
+    }
+
+    h1 {
+        margin: 20px 0;
+        font-size: 2.2rem;
+    }
+
+    .cart-container {
+        padding: 10px;
+    }
+
+    .cart-header {
+        margin-bottom: 10px;
+        padding-bottom: 10px;
+    }
+
+    .cart-total {
+        margin: 10px 0;
+        padding: 10px 0;
+    }
+}
+
+
+/* Dispositivos móveis */
+@media screen and (max-width: 480px) {
+    body {
+        padding-top: 0;
+    }
+
+    header {
+        position: relative;
+    }
+
+    nav ul {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        padding: 10px 0;
+        gap: 8px;
+        justify-content: flex-start;
+    }
+
+    nav ul li a {
+        font-size: 0.75rem;
+        padding: 5px 8px;
+        white-space: nowrap;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+        letter-spacing: 3px;
+        margin: 30px 0;
+        padding-bottom: 30px;
+    }
+
+    h1::after {
+        width: 120px;
+        height: 3px;
+    }
+
+    /* Ajustes dos itens do menu para celulares */
+    .item {
+        flex-direction: column;
     }
 
     .info {
@@ -156,34 +228,22 @@
 
     .price {
         font-size: 1.2rem;
-        margin-bottom: 12px;
     }
 
     .add-to-cart {
         width: 100%;
-        padding: 10px 15px;
-        font-size: 0.85rem;
+        padding: 10px;
+        font-size: 0.8rem;
     }
 
-    /* Carrinho */
+    /* Ajustes do carrinho para celulares */
     .cart-container {
         width: 100%;
         right: -100%;
-        border-left: none;
-        border-top: 4px solid var(--primary-color);
-    }
-
-    .cart-header {
-        padding-bottom: 10px;
-        margin-bottom: 15px;
     }
 
     .your-cart {
-        font-size: 1.3rem;
-    }
-
-    .cart-item-info {
-        gap: 10px;
+        font-size: 1.5rem;
     }
 
     .cart-item-image {
@@ -191,23 +251,8 @@
         height: 50px;
     }
 
-    .cart-item-name {
-        font-size: 0.9rem;
-    }
-
-    .cart-item-price {
-        font-size: 0.9rem;
-    }
-
-    .qty-btn {
-        width: 25px;
-        height: 25px;
-    }
-
     .cart-total {
         font-size: 1.2rem;
-        margin: 15px 0;
-        padding: 10px 0;
     }
 
     .checkout-btn {
@@ -215,39 +260,48 @@
         font-size: 1rem;
     }
 
-    /* Notificações */
-    .notification {
-        left: 20px;
-        right: 20px;
-        padding: 12px 20px;
-        border-radius: 15px;
-        bottom: 10px;
-        text-align: center;
-        justify-content: center;
+    /* Status */
+    .status {
+        margin-left: -50px;
+        transform: translate(-50%, -50%);
     }
 
-    /* Carousel */
-    .carousel .item {
-        min-width: 250px;
-    }
-
-    .carousel .item img {
-        height: 160px;
-    }
-
-    /* Seções especiais */
+    /* Ajustes para as seções específicas */
     #secao-alvo,
     #bebidas,
     #PIZZAS,
     #ACAI {
-        padding-top: 40px;
-        margin-top: -30px;
-        display: flex;
-        flex-direction: column;
-        max-width: 430px;
+        padding-top: 30px;
+        margin-top: -20px;
+    }
+}
+
+/* Dispositivos muito pequenos */
+@media screen and (max-width: 320px) {
+    h1 {
+        font-size: 2rem;
+        letter-spacing: 2px;
     }
 
-    .item:hover {
-        transform: translateY(-5px);
+    nav ul li a {
+        font-size: 0.7rem;
+        padding: 4px 6px;
+    }
+
+    .info h2 {
+        font-size: 1rem;
+    }
+
+    .price {
+        font-size: 1.1rem;
+    }
+
+    #cart-btn {
+        padding: 8px 15px;
+        font-size: 1rem;
+    }
+
+    .add-to-cart {
+        font-size: 0.75rem;
     }
 }
