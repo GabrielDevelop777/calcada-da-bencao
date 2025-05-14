@@ -1,6 +1,4 @@
-// Adicionar botão de seta para retornar ao topo após 3 scrolls
 document.addEventListener("DOMContentLoaded", () => {
-	// Criar o botão de seta
 	const scrollTopButton = document.createElement("div");
 	scrollTopButton.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="16" fill="currentColor" class="bi bi-arrow-90deg-up" viewBox="0 0 16 16">
   <path fill-rule="evenodd" d="M4.854 1.146a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L4 2.707V12.5A2.5 2.5 0 0 0 6.5 15h8a.5.5 0 0 0 0-1h-8A1.5 1.5 0 0 1 5 12.5V2.707l3.146 3.147a.5.5 0 1 0 .708-.708z"/>
@@ -11,7 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	scrollTopButton.style.bottom = "30px";
 	scrollTopButton.style.width = "50px";
 	scrollTopButton.style.height = "50px";
-	scrollTopButton.style.backgroundColor = "red";
+	scrollTopButton.style.backgroundColor = "#ff6b00";
 	scrollTopButton.style.color = "white";
 	scrollTopButton.style.borderRadius = "50%";
 	scrollTopButton.style.display = "flex";
@@ -25,10 +23,8 @@ document.addEventListener("DOMContentLoaded", () => {
 	scrollTopButton.style.transition = "opacity 0.5s ease";
 	scrollTopButton.style.zIndex = "1000";
 
-	// Adicionar ao body
 	document.body.appendChild(scrollTopButton);
 
-	// Contador de scroll
 	let scrollCount = 0;
 
 	// Monitorar eventos de scroll
@@ -38,14 +34,11 @@ document.addEventListener("DOMContentLoaded", () => {
 			scrollCount++;
 		}
 
-		// Mostrar o botão após 3 scrolls
 		if (scrollCount >= 3) {
 			scrollTopButton.style.opacity = "1";
 		} else {
 			scrollTopButton.style.opacity = "0";
 		}
-
-		// Ocultar botão quando estiver no topo
 		if (window.scrollY < 100) {
 			scrollTopButton.style.opacity = "0";
 		}
@@ -63,9 +56,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
 const cart = []; // Tornar global
 
-// Definir o cupom de desconto válido
+// Definir o cupom de desconto
 const validCoupon = "DESCONTO10";
-const discountPercentage = 10; // 10% de desconto
+const discountPercentage = 10;
 
 // Carrinho
 document.addEventListener("DOMContentLoaded", () => {
@@ -109,7 +102,7 @@ document.addEventListener("DOMContentLoaded", () => {
 		const carrinhoVazio = cart.length === 0;
 
 		// Verifica se está fora do horário de funcionamento (das 2h às 18h)
-		if (hora >= 2 && hora < 18) {
+		if (hora >= 2 && hora < 11) {
 			Swal.fire({
 				title: "Loja Fechada!",
 				text: "Abriremos a partir das 18h.",
@@ -123,7 +116,7 @@ document.addEventListener("DOMContentLoaded", () => {
 		if (carrinhoVazio) {
 			Swal.fire({
 				title: "Seu carrinho está vazio!",
-				text: "Volte e escolha um pedido.",
+				text: "Volte e faça um pedido.",
 				icon: "error",
 				confirmButtonText: "Ok",
 			});
@@ -145,7 +138,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 	// Adicionar item ao carrinho
 	// Adicionar item ao carrinho
-	addToCartButtons.forEach((button) => {
+	for (const button of addToCartButtons) {
 		button.addEventListener("click", function () {
 			const item = this.closest(".item");
 			const name = item.getAttribute("data-name");
@@ -167,13 +160,13 @@ document.addEventListener("DOMContentLoaded", () => {
 				text: `${name} foi adicionado ao seu carrinho`,
 				icon: "success",
 				toast: true,
-				position: "top-end",
+				position: "top-start", // ou top-end, top-start etc.
 				showConfirmButton: false,
 				timer: 2000,
 				timerProgressBar: true,
 			});
 		});
-	});
+	}
 	// Atualizar carrinho com a barra e o formulário
 	const updateCart = () => {
 		cartItemsContainer.innerHTML = "";
@@ -198,8 +191,9 @@ document.addEventListener("DOMContentLoaded", () => {
 			li.style.alignItems = "center";
 			li.style.justifyContent = "space-between";
 			li.style.padding = "10px";
-			li.style.borderBottom = "1px solid #ddd";
+			li.style.borderBottom = "5px solid #ddd";
 			li.style.borderRadius = "5px";
+			li.style.fontSize = "15px";
 
 			li.innerHTML = `
                 <img src="${item.image}" alt="${item.name}" style="width: 50px; height: 50px; border-radius: 5px;">
@@ -207,7 +201,10 @@ document.addEventListener("DOMContentLoaded", () => {
                     <strong>${item.name}</strong> - R$${item.price.toFixed(2)} (Qtd: ${item.quantity})<br>
                     <em>Total: R$${(item.price * item.quantity).toFixed(2)}</em>
                 </div>
-                <button class="remove-item" data-index="${index}" style="border: none; background: none; color: red; cursor: pointer; font-size: 20px;">−</button>
+                <button class="remove-item" data-index="${index}" style="border: none; background: none; color: red; cursor: pointer; font-size: 20px;"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" 
+				class="bi bi-x-lg" viewBox="0 0 16 16">
+  				<path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z"/>
+				</svg></button>
             `;
 			cartItemsDiv.appendChild(li);
 			total += item.price * item.quantity;
@@ -254,13 +251,13 @@ document.addEventListener("DOMContentLoaded", () => {
 		cartCount.textContent = count;
 
 		// Adicionar eventos de remoção
-		document.querySelectorAll(".remove-item").forEach((button) => {
+		for (const button of document.querySelectorAll(".remove-item")) {
 			button.addEventListener("click", function () {
 				const index = Number.parseInt(this.getAttribute("data-index"));
 				cart.splice(index, 1);
 				updateCart();
 			});
-		});
+		}
 
 		// Adicionar evento ao botão de finalizar pedido
 		const checkoutBtn = document.getElementById("checkout-btn");
@@ -285,7 +282,6 @@ const aplicarCupom = () => {
 
 	const cupomValue = cupomInput.value.trim().toUpperCase();
 
-	// Encontrar elemento para mostrar mensagens sobre o cupom
 	let cupomMessage = document.getElementById("cupom-message");
 	if (!cupomMessage) {
 		cupomMessage = document.createElement("div");
@@ -296,32 +292,26 @@ const aplicarCupom = () => {
 		cupomInput.parentNode.insertBefore(cupomMessage, cupomInput.nextSibling);
 	}
 
-	// Verificar se o cupom é válido
+	// Se o cupom for válido
 	if (cupomValue === validCoupon) {
 		cupomMessage.textContent = "Cupom DESCONTO10 aplicado! 10% de desconto";
 		cupomMessage.style.color = "green";
-
-		// Exibir o total com desconto no carrinho
 		exibirDescontoNoCarrinho();
-
 		return true;
-	} else if (cupomValue !== "") {
+	}
+
+	// Se o campo não estiver vazio, mas for inválido
+	if (cupomValue !== "") {
 		cupomMessage.textContent = "Cupom inválido";
 		cupomMessage.style.color = "red";
-
-		// Remover informações de desconto se houver
-		const discountInfoElement = document.getElementById("discount-info");
-		if (discountInfoElement) {
-			discountInfoElement.remove();
-		}
 	} else {
 		cupomMessage.textContent = "";
+	}
 
-		// Remover informações de desconto se houver
-		const discountInfoElement = document.getElementById("discount-info");
-		if (discountInfoElement) {
-			discountInfoElement.remove();
-		}
+	// Remover informações de desconto se houver
+	const discountInfoElement = document.getElementById("discount-info");
+	if (discountInfoElement) {
+		discountInfoElement.remove();
 	}
 
 	return false;
@@ -417,7 +407,7 @@ const enviarPedido = () => {
 	const numeroWhatsApp = "5521969720690"; // Número do WhatsApp do restaurante
 
 	// Mensagem inicial com os dados do cliente
-	let mensagem = `  RESUMO DO PEDIDO:\n`;
+	let mensagem = "RESUMO DO PEDIDO:\n";
 	mensagem += `Nome do cliente : ${nome}\n`;
 	mensagem += `Telefone : ${telefone}\n`;
 	mensagem += `Endereço : ${endereco}\n`;
@@ -430,9 +420,9 @@ const enviarPedido = () => {
 	}
 
 	// Adicionar os itens do carrinho à mensagem
-	cart.forEach((produto) => {
+	for (const produto of cart) {
 		mensagem += `- ${produto.name} R$${produto.price.toFixed(2)} (Qtd: ${produto.quantity})\n`;
-	});
+	}
 
 	// Total do pedido
 	const total = cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
@@ -470,27 +460,28 @@ document.addEventListener("DOMContentLoaded", () => {
 		statusDiv.style.color = "white";
 		statusDiv.style.fontWeight = "bold";
 
-		if (hora >= 18 || hora < 2) {
+		if (hora >= 11 || hora < 2) {
 			// Corrigido para funcionar corretamente
 			statusDiv.innerHTML = "🟢 Aberto";
 			statusDiv.style.backgroundColor = "#21BA45";
 			statusDiv.style.borderRadius = "20px";
-			statusDiv.style.padding = "2px 20px";
+			statusDiv.style.padding = "12px 20px";
 			statusDiv.style.fontWeight = "600";
 			statusDiv.style.width = "130px";
 			statusDiv.style.position = "absolute";
-			statusDiv.style.left = "46%";
+			statusDiv.style.marginLeft = "46%";
 			statusDiv.style.marginTop = "30px";
 		} else {
 			statusDiv.innerHTML = "⌛ Fechado";
 			statusDiv.style.backgroundColor = "#d60000"; // Vermelho
 			statusDiv.classList.add("fechado");
 			statusDiv.style.borderRadius = "20px";
-			statusDiv.style.padding = "2px 19px";
+			statusDiv.style.padding = "12px 20px";
 			statusDiv.style.fontWeight = "600";
 			statusDiv.style.width = "130px";
 			statusDiv.style.position = "absolute";
-			statusDiv.style.left = "46%";
+			statusDiv.style.marginLeft = "46%";
+			statusDiv.style.marginTop = "30px";
 		}
 	};
 

@@ -1,4 +1,3 @@
-/* Reset básico e fonte personalizada */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Road+Rage&display=swap');
 
@@ -23,15 +22,16 @@
 	--transition: all 0.3s ease;
 }
 
+
 body {
-	background: #f5f5f5 url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1IiBoZWlnaHQ9IjUiPgo8cmVjdCB3aWR0aD0iNSIgaGVpZ2h0PSI1IiBmaWxsPSIjZmZmIj48L3JlY3Q+CjxyZWN0IHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGZpbGw9IiNmOGY4ZjgiPjwvcmVjdD4KPC9zdmc+');
+	background: #f5f5f5 url('./img//fundo.svg') repeat;
+	background-color: #1e1e1e;
 	color: var(--dark-color);
 	line-height: 1.6;
 	position: relative;
 	min-height: 100vh;
 }
 
-/* Scrollbar personalizada */
 ::-webkit-scrollbar {
 	width: 8px;
 }
@@ -59,47 +59,103 @@ body {
 	height: 100vh;
 }
 
-/* Header e navegação */
 header {
-	background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+	background-image: url('./img/logo-header.svg');
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	filter: blur(10);
 	color: white;
-	padding: 2rem;
-	position: sticky;
+	padding: 2rem 1rem;
+	min-height: 300px;
+	height: auto;
+	max-height: 400px;
 	top: 0;
 	z-index: 100;
 	display: flex;
+	flex-direction: column;
 	justify-content: space-between;
 	align-items: center;
 	box-shadow: var(--shadow-md);
-	border-bottom: 3px solid var(--accent-color);
+	border-bottom: 3px solid #000;
+	position: relative;
+}
+
+header p {
+	width: 900px;
+	color: white;
+	font-weight: 600;
+	font-size: 6rem;
+	font-family: "Road Rage", sans-serif;
+	text-align: center;
+	margin: 10px auto;
+	padding: 10px 20px;
+	border-radius: 30px;
+	box-shadow: var(--shadow-sm);
+	position: relative;
+	top: -20px;
+	left: 30px;
+	letter-spacing: 1px;
+	animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+		transform: translateY(20px);
+	}
+
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
 }
 
 nav ul {
 	display: flex;
 	list-style: none;
-	gap: 15px;
+	gap: clamp(10px, 2vw, 25px);
 	flex-wrap: wrap;
+	justify-content: center;
+	margin-bottom: 15px;
 }
 
 nav ul li a {
 	color: white;
 	text-decoration: none;
+	font-size: clamp(0.9rem, 3vw, 1.25rem);
+	/* Fonte responsiva */
 	font-weight: 600;
-	padding: 8px 15px;
+	padding: 8px 10px;
 	border-radius: 30px;
 	transition: var(--transition);
 	letter-spacing: 0.5px;
 	position: relative;
-	left: 100px;
 	overflow: hidden;
-	transform: color 300ms;
+	display: block;
+}
+
+nav ul li a::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 0%;
+	height: 100%;
+	color: #ff6b00;
+	transition: all 0.5s;
+	z-index: -1;
 }
 
 nav ul li a:hover {
-	background-color: rgba(255, 255, 255, 0.2);
-	transform: translateY(-3px);
-	box-shadow: var(--shadow-sm);
+	color: #ff6b00;
 }
+
+nav ul li a:hover::before {
+	width: 100%;
+}
+
+
 
 .status {
 	font-weight: 600;
@@ -121,14 +177,18 @@ nav ul li a:hover {
 	color: var(--primary-color);
 	border: none;
 	font-size: 1.2rem;
-	padding: 10px 20px;
+	padding: 8px 15px;
 	border-radius: 30px;
 	cursor: pointer;
+	position: absolute;
+	bottom: 20px;
+	right: 20px;
 	display: flex;
 	align-items: center;
 	gap: 5px;
 	box-shadow: var(--shadow-sm);
 	transition: var(--transition);
+	z-index: 5;
 }
 
 #cart-btn:hover {
@@ -152,7 +212,6 @@ nav ul li a:hover {
 	transition: var(--transition);
 }
 
-/* Seções principais */
 main {
 	max-width: 1200px;
 	margin: 0 auto;
@@ -184,9 +243,7 @@ h1::after {
 	border-radius: 2px;
 }
 
-/* Itens do menu */
-.menu,
-.menu-combo {
+.menu {
 	display: grid;
 	grid-template-columns: 1fr;
 	gap: 30px;
@@ -196,7 +253,7 @@ h1::after {
 
 .item {
 	display: flex;
-	background-color: white;
+	background-color: #dbdbdb;
 	border-radius: 15px;
 	overflow: hidden;
 	box-shadow: var(--shadow-md);
@@ -326,7 +383,6 @@ h1::after {
 	left: 100%;
 }
 
-/* Carrinho */
 .cart-container {
 	position: fixed;
 	top: 0;
@@ -508,7 +564,6 @@ h1::after {
 	left: 100%;
 }
 
-/* Seções específicas */
 #secao-alvo,
 #bebidas,
 #PIZZAS,
@@ -517,7 +572,6 @@ h1::after {
 	margin-top: -40px;
 }
 
-/* Efeito de pulsação para o status "Aberto" */
 @keyframes pulse {
 	0% {
 		transform: scale(1);
@@ -532,7 +586,6 @@ h1::after {
 	}
 }
 
-/* Notificação de adicionado ao carrinho */
 @keyframes fadeInOut {
 	0% {
 		opacity: 0;
@@ -576,7 +629,6 @@ h1::after {
 	font-size: 1.2rem;
 }
 
-/* Carousel para as seções */
 .carousel {
 	overflow-x: auto;
 	scroll-snap-type: x mandatory;
@@ -599,4 +651,10 @@ h1::after {
 .carousel .item img {
 	width: 100%;
 	height: 180px;
+}
+
+#scroll-to-top:hover {
+	background-color: #e65c00;
+	transform: scale(1.1);
+	transition: all 0.3s ease;
 }

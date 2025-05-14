@@ -5,8 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Calçada da Benção Delivery</title>
+
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="responsividade.css">
+
     <link rel="apple-touch-icon" sizes="200x200" href="./img/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="35x35" href="./img/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="./img/favicon-16x16.png">
@@ -14,7 +16,6 @@
 </head>
 
 <body>
-
     <header>
         <nav>
             <ul>
@@ -26,6 +27,7 @@
             </ul>
         </nav>
 
+        <p>ESSE CARDÁPIO ESTÁ IRRESISTÍVEL!</p>
 
         <button id="cart-btn">🛒<span id="cart-count">0</span></button>
     </header>
@@ -135,85 +137,27 @@
                 </div>
             </div>
         </section>
-    </main>
-
-
-    <!------------------------------------------------------------------------------------------------------------------------->
 
 
 
-    <!-- Carrinho -->
-    <div id="cart-container" class="cart-container">
-        <div class="cart-header">
-            <h2 class="your-cart">Seu Carrinho</h2>
-            <button id="close-cart">❌</button>
-        </div>
-
-        <ul class="cart-items"></ul>
-
-        <div class="cart-total">Total: R$<span id="cart-total">0.00</span></div>
-
-        <button onclick="enviarPedido()" id="finalizar-pedido" class="checkout-btn">Finalizar Compra</button>
-    </div>
-    <br>
-    <br>
+        <!------------------------------------------------------------------------------------------------------------------------->
 
 
 
-    <!------------------------------------------------------------------------------------------------------------------------->
-
-
-
-
-
-    <section id="secao-alvo" class="menu-combo">
-
-        <h1>COMBOS</h1>
-
-
-        <div class="item" data-name="Combo 3 X-frango" data-price="49.00" data-image="./img/bacon-egg.png">
-            <img src="./combo/combo.jpg" alt="Combo xfrango">
-            <div class="info">
-                <h2>Combo 3 X-frango</h2>
-                <span class="price">R$49,00</span>
-                <button class="add-to-cart">Adicionar ao carrinho</button>
+        <!-- Carrinho -->
+        <div id="cart-container" class="cart-container">
+            <div class="cart-header">
+                <h2 class="your-cart">Seu Carrinho</h2>
+                <button id="close-cart">❌</button>
             </div>
+
+            <ul class="cart-items"></ul>
+
+            <div class="cart-total">Total: R$<span id="cart-total">0.00</span></div>
+
+            <button onclick="enviarPedido()" id="finalizar-pedido" class="checkout-btn">Finalizar Compra</button>
         </div>
 
-
-
-        <div class="item" data-name="Combo 3 Duplo X-bacon" data-price="79.00" data-image="./img/carrosel-2.png">
-            <img src="./combo/combo1.jpg" alt="Cambo X-baocn">
-            <div class="info">
-                <h2>Combo 3 Duplo X-bacon</h2>
-                <span class="price">R$79,00</span>
-                <button class="add-to-cart">Adicionar ao carrinho</button>
-            </div>
-        </div>
-
-
-
-        <div class="item" data-name="Combo 4 X-burger" data-price="85.00" data-image="./img/carrossel-1.png">
-            <img src="./combo/combo2.jpg" alt="combo 4 X-burger">
-            <div class="info">
-                <h2>Combo 4 X-burger</h2>
-                <span class="price">R$85,00</span>
-                <button class="add-to-cart">Adicionar ao carrinho</button>
-            </div>
-        </div>
-
-
-
-        <div class="item" data-name="ombo Coração de Frango" data-price="120.00" data-image="./img/carrossel-1.png">
-            <img src="./combo/combo3.jpg" alt="Combo coracao frango">
-            <div class="info">
-                <h2>Combo Coração de Frango</h2>
-                <span class="price">R$120,00</span>
-                <button class="add-to-cart">Adicionar ao carrinho</button>
-            </div>
-        </div>
-        <br>
-        <br>
 
 
 
@@ -222,7 +166,56 @@
 
 
 
-        <section id="bebidas" class="menu-combo" style="width: 800px; position: relative; left: 0px;">
+
+        <section id="secao-alvo" class="menu">
+            <h1>COMBOS</h1>
+            <div class="item" data-name="Combo 3 X-frango" data-price="49.00" data-image="./img/bacon-egg.png">
+                <img src="./combo/combo.jpg" alt="Combo xfrango">
+                <div class="info">
+                    <h2>Combo 3 X-frango</h2>
+                    <span class="price">R$49,00</span>
+                    <button class="add-to-cart">Adicionar ao carrinho</button>
+                </div>
+            </div>
+
+
+            <div class="item" data-name="Combo 3 Duplo X-bacon" data-price="79.00" data-image="./img/carrosel-2.png">
+                <img src="./combo/combo1.jpg" alt="Cambo X-baocn">
+                <div class="info">
+                    <h2>Combo 3 Duplo X-bacon</h2>
+                    <span class="price">R$79,00</span>
+                    <button class="add-to-cart">Adicionar ao carrinho</button>
+                </div>
+            </div>
+
+
+            <div class="item" data-name="Combo 4 X-burger" data-price="85.00" data-image="./img/carrossel-1.png">
+                <img src="./combo/combo2.jpg" alt="combo 4 X-burger">
+                <div class="info">
+                    <h2>Combo 4 X-burger</h2>
+                    <span class="price">R$85,00</span>
+                    <button class="add-to-cart">Adicionar ao carrinho</button>
+                </div>
+            </div>
+
+
+            <div class="item" data-name="Combo Coração de Frango" data-price="120.00"
+                data-image="./img/carrossel-1.png">
+                <img src="./combo/combo3.jpg" alt="Combo coracao frango">
+                <div class="info">
+                    <h2>Combo Coração de Frango</h2>
+                    <span class="price">R$120,00</span>
+                    <button class="add-to-cart">Adicionar ao carrinho</button>
+                </div>
+            </div>
+        </section>
+
+        <!------------------------------------------------------------------------------------------------------------------------->
+
+
+
+
+        <section id="bebidas" class="menu">
 
             <h1>BEBIDAS</h1>
 
@@ -268,73 +261,71 @@
                     <button class="add-to-cart">Adicionar ao carrinho</button>
                 </div>
             </div>
-            <br>
-            <br>
+        </section>
 
 
 
 
-            <!------------------------------------------------------------------------------------------------------------------------->
+        <!------------------------------------------------------------------------------------------------------------------------->
 
 
 
 
 
-            <section id="PIZZAS" class="menu-combo" style="width: 800px; position: relative; left: 0px;">
+        <section id="PIZZAS" class="menu">
 
-                <h1>PIZZAS</h1>
+            <h1>PIZZAS</h1>
 
 
-                <div class="item" data-name="Pizza Calabresa" data-price="22.50" data-image="./img/carrosel-2.png">
-                    <img src="./pizza/pizza-calabresa.jpeg" alt="Pizza Calabresa">
-                    <div class="info">
-                        <h2>Pizza calabresa</h2>
-                        <span class="price">R$22,50</span>
-                        <button class="add-to-cart">Adicionar ao carrinho</button>
-                    </div>
+            <div class="item" data-name="Pizza Calabresa" data-price="22.50" data-image="./img/carrosel-2.png">
+                <img src="./pizza/pizza-calabresa.jpeg" alt="Pizza Calabresa">
+                <div class="info">
+                    <h2>Pizza calabresa</h2>
+                    <span class="price">R$22,50</span>
+                    <button class="add-to-cart">Adicionar ao carrinho</button>
                 </div>
+            </div>
 
 
 
-                <div class="item" data-name="Pizza de Frango" data-price="25.00" data-image="./img/carrossel-1.png">
-                    <img src="./pizza/pizza-frango.jpeg" alt="pizza de frango">
-                    <div class="info">
-                        <h2>Pizza Frango</h2>
-                        <span class="price">R$25,00</span>
-                        <button class="add-to-cart">Adicionar ao carrinho</button>
-                    </div>
+            <div class="item" data-name="Pizza de Frango" data-price="25.00" data-image="./img/carrossel-1.png">
+                <img src="./pizza/pizza-frango.jpeg" alt="pizza de frango">
+                <div class="info">
+                    <h2>Pizza Frango</h2>
+                    <span class="price">R$25,00</span>
+                    <button class="add-to-cart">Adicionar ao carrinho</button>
                 </div>
+            </div>
 
 
 
-                <div class="item" data-name="Pizza mista" data-price="30.00" data-image="./img/carrossel-1.png">
-                    <img src="./pizza/pizza-mista" alt="Pizza mista">
-                    <div class="info">
-                        <h2>Pizza Mista</h2>
-                        <span class="price">R$30,00</span>
-                        <button class="add-to-cart">Adicionar ao carrinho</button>
-                    </div>
+            <div class="item" data-name="Pizza mista" data-price="30.00" data-image="./img/carrossel-1.png">
+                <img src="./pizza/pizza-mista" alt="Pizza mista">
+                <div class="info">
+                    <h2>Pizza Mista</h2>
+                    <span class="price">R$30,00</span>
+                    <button class="add-to-cart">Adicionar ao carrinho</button>
                 </div>
+            </div>
 
 
 
-                <div class="item" data-name="Pizza Portuguesa" data-price="27.00" data-image="./img/carrossel-1.png">
-                    <img src="./pizza/portuguesa.jpg" alt="Pizza Portuguesa">
-                    <div class="info">
-                        <h2>Pizza Portuguesa</h2>
-                        <span class="price">R$37,00</span>
-                        <button class="add-to-cart">Adicionar ao carrinho</button>
-                    </div>
+            <div class="item" data-name="Pizza Portuguesa" data-price="27.00" data-image="./img/carrossel-1.png">
+                <img src="./pizza/portuguesa.jpg" alt="Pizza Portuguesa">
+                <div class="info">
+                    <h2>Pizza Portuguesa</h2>
+                    <span class="price">R$37,00</span>
+                    <button class="add-to-cart">Adicionar ao carrinho</button>
                 </div>
-                <br>
-                <br>
+            </div>
+        </section>
 
 
 
 
 
 
-                <!------------------------------------------------------------------------------------------------------------------------->
+        <!------------------------------------------------------------------------------------------------------------------------->
 
 
 
@@ -342,44 +333,43 @@
 
 
 
-                <section id="ACAI" class="menu-combo" style="width: 800px; position: relative; left: 0px;">
-                    <h1>AÇAI</h1>
-                    <div class="item" data-name="Acai 1L" data-price="22.50" data-image="./img/carrosel-2.png">
-                        <img src="./acai/acai-1L.jpg" alt="Acai 1L">
-                        <div class="info">
-                            <h2>Açai 1L</h2>
-                            <span class="price">R$22,50</span>
-                            <button class="add-to-cart">Adicionar ao carrinho</button>
-                        </div>
-                    </div>
+        <section id="ACAI" class="menu">
+            <h1>AÇAI</h1>
+            <div class="item" data-name="Acai 1L" data-price="22.50" data-image="./img/carrosel-2.png">
+                <img src="./acai/acai-1L.jpg" alt="Acai 1L">
+                <div class="info">
+                    <h2>Açai 1L</h2>
+                    <span class="price">R$22,50</span>
+                    <button class="add-to-cart">Adicionar ao carrinho</button>
+                </div>
+            </div>
 
-                    <div class="item" data-name="Acai 200ml" data-price="4.00" data-image="./img/carrossel-1.png">
-                        <img src="./acai/acai-200ml.avif" alt="acai 200ml">
-                        <div class="info">
-                            <h2>Açai 200ml</h2>
-                            <span class="price">R$4,00</span>
-                            <button class="add-to-cart">Adicionar ao carrinho</button>
-                        </div>
-                    </div>
-                    <div class="item" data-name="acai 350ml" data-price="5.50" data-image="./img/carrossel-1.png">
-                        <img src="./acai/acai-350.jpg" alt="acai 300 ml">
-                        <div class="info">
-                            <h2>Açai 300ml</h2>
-                            <span class="price">R$5,50</span>
-                            <button class="add-to-cart">Adicionar ao carrinho</button>
-                        </div>
-                    </div>
-                    <div class="item" data-name="Acai de Frutas" data-price="15.00" data-image="./img/carrossel-1.png">
-                        <img src="./acai/acai-fruta.jpg" alt="Acai de Frutas">
-                        <div class="info">
-                            <h2>Açai de Frutas</h2>
-                            <span class="price">R$15,00</span>
-                            <button class="add-to-cart">Adicionar ao carrinho</button>
-                        </div>
-                    </div>
-                    <br>
-                    <br>
-
+            <div class="item" data-name="Acai 200ml" data-price="4.00" data-image="./img/carrossel-1.png">
+                <img src="./acai/acai-200ml.avif" alt="acai 200ml">
+                <div class="info">
+                    <h2>Açai 200ml</h2>
+                    <span class="price">R$4,00</span>
+                    <button class="add-to-cart">Adicionar ao carrinho</button>
+                </div>
+            </div>
+            <div class="item" data-name="acai 350ml" data-price="5.50" data-image="./img/carrossel-1.png">
+                <img src="./acai/acai-350.jpg" alt="acai 300 ml">
+                <div class="info">
+                    <h2>Açai 300ml</h2>
+                    <span class="price">R$5,50</span>
+                    <button class="add-to-cart">Adicionar ao carrinho</button>
+                </div>
+            </div>
+            <div class="item" data-name="Acai de Frutas" data-price="15.00" data-image="./img/carrossel-1.png">
+                <img src="./acai/acai-fruta.jpg" alt="Acai de Frutas">
+                <div class="info">
+                    <h2>Açai de Frutas</h2>
+                    <span class="price">R$15,00</span>
+                    <button class="add-to-cart">Adicionar ao carrinho</button>
+                </div>
+            </div>
+        </section>
+    </main>
 
 </body>
 <script src="script.js"></script>
